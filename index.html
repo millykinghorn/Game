@@ -1,0 +1,60 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no, viewport-fit=cover">
+  <meta name="apple-mobile-web-app-capable" content="yes">
+  <meta name="mobile-web-app-capable" content="yes">
+  <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+  <meta name="apple-mobile-web-app-title" content="Across the Bar">
+  <meta name="theme-color" content="#1a1020">
+  <link rel="manifest" href="manifest.webmanifest">
+  <link rel="apple-touch-icon" href="icons/icon-180.png">
+  <title>Across the Bar</title>
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+  <div id="game"></div>
+
+  <!-- in-game HUD -->
+  <div id="hud" class="hidden">
+    <div id="timer">0:00.0</div>
+    <div id="progress"><div id="progress-fill"></div><span id="progress-heart">♥</span></div>
+  </div>
+  <div id="popups"></div>
+  <div id="splash" aria-hidden="true"></div>
+  <div id="tap-hint" class="hidden"><span>◀ tap</span><span>tap ▶</span></div>
+
+  <!-- title -->
+  <div id="title" class="screen">
+    <div class="card">
+      <p class="eyebrow" id="level-name">Level 1</p>
+      <h1 id="level-sub">Across the Bar</h1>
+      <p>She's waiting by the DJ booth.<br>Tap the <b>left</b> or <b>right</b> side of the screen to step aside.<br>Dodge people, puddles and flying drinks.</p>
+      <p class="best" id="best-title"></p>
+      <button id="start">Tap to start</button>
+    </div>
+  </div>
+
+  <!-- ending -->
+  <div id="message" class="hidden"><p id="message-text"></p></div>
+  <div id="complete" class="screen hidden">
+    <div class="card">
+      <p class="eyebrow">Level complete</p>
+      <h1 id="final-time">0:00.0</h1>
+      <p id="final-detail"></p>
+      <p class="best" id="best-final"></p>
+      <button id="retry">Play again</button>
+    </div>
+  </div>
+
+  <div id="rotate" class="screen"><div class="card"><p>Turn your iPad sideways to play ↻</p></div></div>
+
+  <script type="module" src="js/main.js"></script>
+  <script>
+    if ('serviceWorker' in navigator && location.protocol !== 'file:') {
+      window.addEventListener('load', () => navigator.serviceWorker.register('sw.js').catch(() => {}));
+    }
+  </script>
+</body>
+</html>
